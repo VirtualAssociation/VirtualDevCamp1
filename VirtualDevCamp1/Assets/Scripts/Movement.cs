@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
-	private Vector3 moveStep = new Vector3(0f, 0f, 0.2f);
+	private Vector3 moveStep = new Vector3(0f, 0f, 0.5f);
 
 	// Use this for initialization
 	void Start () {

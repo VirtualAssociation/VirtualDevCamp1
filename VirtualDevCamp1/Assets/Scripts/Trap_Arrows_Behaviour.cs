@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Trap_Arrows_Behaviour : MonoBehaviour {
 
 	private bool hasShot;
+	private float speed;
 	private List<GameObject> arrows;
 	public GameObject arrow;
 	public GameObject shooter;
@@ -12,6 +13,7 @@ public class Trap_Arrows_Behaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		hasShot = false;
+		speed = 2.5f;
 	}
 	
 	// Update is called once per frame
@@ -21,18 +23,15 @@ public class Trap_Arrows_Behaviour : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(hasShot == false) {
-			for(var i = 0; i < 1; i++) {
-				Vector3 offset = new Vector3(Random.Range(-5, 5), Random.Range(-2.5f, 2.5f), 0);
-				arrows.Add((GameObject)Instantiate(arrow, shooter.transform.position + offset, Quaternion.identity));
-			}
+			Debug.Log(other.gameObject.name);
+			Vector3 offset = new Vector3(Random.Range(-shooter.GetComponent<Renderer>().bounds.size.x / 2, shooter.GetComponent<Renderer>().bounds.size.x / 2), Random.Range(-speed, speed), 0);
+			arrows.Add((GameObject)Instantiate(arrow, shooter.transform.position + offset, Quaternion.identity));
 			hasShot = true;
-		}
-		Debug.Log("ENTER");
+		}	
 	}
 
 	void OnTriggerExit(Collider other) {
 		// if some condition
 		Debug.Log("Exiting on the Plane");
 	}
-
 }
