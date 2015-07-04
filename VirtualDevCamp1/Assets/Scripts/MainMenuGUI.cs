@@ -11,7 +11,8 @@ public class MainMenuGUI : MonoBehaviour
 
         if (GUI.Button(new Rect(Screen.width / 2 - width / 2 + 10, 30 + Screen.height / 2 - height / 2, width-20, 20), "Jouer"))
         {
-            //todo
+            GameObject.Find("LobbyGUI").SetActive(true);
+            this.gameObject.SetActive(false);
         }
 
         if (GUI.Button(new Rect(Screen.width / 2 - width / 2 + 10, 30 + Screen.height / 2 - height / 2 + 50, width - 20, 20), "Options"))
